@@ -1,0 +1,49 @@
+{
+    "name": "tyloo/api-response-helpers",
+    "description": "A super simple package allowing for consistent API responses throughout your application",
+    "type": "library",
+    "keywords": [
+        "api response",
+        "php api response",
+        "laravel api response",
+        "symfony api response",
+        "api response helpers"
+    ],
+    "homepage": "https://github.com/tyloo/api-response-helpers",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Julien 'Tyloo' Bonvarlet",
+            "email": "jbonva@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "ext-json": "*",
+        "symfony/http-foundation": "^5.3"
+    },
+    "require-dev": {
+        "ergebnis/phpstan-rules": "^0.15.3",
+        "friendsofphp/php-cs-fixer": "^3.1",
+        "phpstan/phpstan": "^0.12.99",
+        "phpstan/phpstan-strict-rules": "^0.12.11",
+        "phpunit/phpunit": "^9.5",
+        "thecodingmachine/phpstan-strict-rules": "^0.12.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tyloo\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tyloo\\Tests\\": "tests"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

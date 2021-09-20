@@ -1,0 +1,39 @@
+name: Static Analysis
+
+on: [push, pull_request]
+
+jobs:
+  tests:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        php: [8.0]
+        composer-version: [v2]
+        dependency-version: [prefer-lowest, prefer-stable]
+
+    name: PHP${{ matrix.php }} - ${{ matrix.dependency-version }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.composer/cache/files
+          key: dependencies-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+          tools: composer:${{ matrix.composer-version }}
+
+      - name: Install dependencies
+        run: composer update --${{ matrix.dependency-version }} --no-progress --no-interaction
+
+      - name: Execute PHP-CS-Fixer
+        run: vendor/bin/phpstan analyse
