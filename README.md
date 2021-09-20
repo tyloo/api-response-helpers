@@ -47,7 +47,7 @@ Optionally, the trait could be imported within a base controller.
 
 Returns a `404` HTTP status code, an exception object can optionally be passed.
 
-#### `respondWithSuccess(array|JsonSerializable|null $contents = [])`
+#### `respondWithSuccess(?array $contents = [])`
 
 Returns a `200` HTTP status code
 
@@ -67,11 +67,11 @@ Returns a `403` HTTP status code
 
 Returns a `400` HTTP status code
 
-#### `respondCreated(array|JsonSerializable|null $data = [])`
+#### `respondCreated(?array $data = [])`
 
 Returns a `201` HTTP status code, with response optional data
 
-#### `respondNoContent(array|JsonSerializable|null $data = [])`
+#### `respondNoContent(?array $data = [])`
 
 Returns a `204` HTTP status code, with optional response data. Strictly speaking, the response body should be empty. However, functionality to optionally return data was added to handle legacy projects. Within your own projects, you can simply call the method, omitting parameters, to generate a correct `204` response i.e. `return $this->respondNoContent()`
 
